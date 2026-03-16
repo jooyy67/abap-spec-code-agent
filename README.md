@@ -74,10 +74,10 @@ GEMINI_API_KEY=YOUR_GEMINI_KEY
 
 
 ### 3️⃣ 프로그램 실행
+```
 bash
 streamlit run app.py
 ```
-
 
 
 ---
