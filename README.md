@@ -38,23 +38,19 @@
 | :--- | :--- |
 | **개발 언어** | Python |
 | **UI 프레임워크** | Streamlit |
-| **AI 모델** | OpenAI API (GPT-4o), Gemini API (Pro) |
+| **AI 모델** | Gemini API (Gemini-2.5 flash, Gemini-2.5 Pro) |
 | **데이터 저장** | SQLite |
 | **개발 도구** | Cursor |
 
 ### 📂 프로젝트 구조
 
-abap-spec-code-agent/
-│
-├─ app.py                # Streamlit 메인 실행 파일
-├─ rules/                # AI 가이드라인 및 템플릿 폴더
-│  ├─ CM_스펙템플릿.md     # 표준 설계서 양식 규칙
-│  └─ CM_ABAP패턴.md      # 표준 코딩 패턴 및 컨벤션
-│
-├─ requirements.txt      # Python 의존성 패키지 목록
-└─ README.md             # 프로젝트 문서
-
-
+📦 abap-spec-code-agent
+ ┣ 📜 app.py
+ ┣ 📂 rules
+ ┃ ┣ 📜 CM_스펙템플릿.md
+ ┃ ┗ 📜 CM_ABAP패턴.md
+ ┣ 📜 requirements.txt
+ ┗ 📜 README.md
 
 ---
 
@@ -69,7 +65,6 @@ pip install -r requirements.txt
 ### 2️⃣ 환경변수 설정
 .env 파일이나 시스템 환경변수에 아래 API 키를 설정합니다.
 bash
-OPENAI_API_KEY=YOUR_OPENAI_KEY
 GEMINI_API_KEY=YOUR_GEMINI_KEY
 
 
