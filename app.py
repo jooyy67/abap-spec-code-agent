@@ -11,7 +11,7 @@ import google.generativeai as genai
 # 기본 설정
 # =========================
 st.set_page_config(
-    page_title="ABAP Spec/Code 생성 에이전트_TEST",
+    page_title="ABAP Spec/Code 생성 에이전트",
     layout="wide"
 )
 
