@@ -66,16 +66,15 @@ pip install -r requirements.txt
 
 
 ### 2️⃣ 환경변수 설정
-```
+
 .env 파일이나 시스템 환경변수에 아래 API 키를 설정합니다.
-bash
+```
 GEMINI_API_KEY=YOUR_GEMINI_KEY
 ```
 
 
 ### 3️⃣ 프로그램 실행
 ```
-bash
 streamlit run app.py
 ```
 
