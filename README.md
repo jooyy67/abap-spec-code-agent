@@ -43,7 +43,7 @@
 | **개발 도구** | Cursor |
 
 ### 📂 프로젝트 구조
-text
+
 abap-spec-code-agent/
 │
 ├─ app.py                # Streamlit 메인 실행 파일
