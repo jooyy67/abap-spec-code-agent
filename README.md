@@ -34,6 +34,7 @@
 ## 🏗 4. 시스템 구조 및 기술 스택
 
 ### 🛠 기술 스택
+```
 | 구분 | 기술 |
 | :--- | :--- |
 | **개발 언어** | Python |
@@ -41,7 +42,7 @@
 | **AI 모델** | Gemini API (Gemini-2.5 flash, Gemini-2.5 Pro) |
 | **데이터 저장** | SQLite |
 | **개발 도구** | Cursor |
-
+```
 ## 📂 프로젝트 구조
 
 ```
@@ -58,22 +59,24 @@
 ## 🚀 5. 실행 방법
 
 ### 1️⃣ Python 패키지 설치
+```
 bash
 pip install -r requirements.txt
-
+```
 
 
 ### 2️⃣ 환경변수 설정
+```
 .env 파일이나 시스템 환경변수에 아래 API 키를 설정합니다.
 bash
 GEMINI_API_KEY=YOUR_GEMINI_KEY
+```
 
-
-
+```
 ### 3️⃣ 프로그램 실행
 bash
 streamlit run app.py
-
+```
 
 
 
