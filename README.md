@@ -42,16 +42,16 @@
 | **데이터 저장** | SQLite |
 | **개발 도구** | Cursor |
 
-### 📂 프로젝트 구조
+## 📂 프로젝트 구조
 
+```
 📦 abap-spec-code-agent
- ┣ 📜 app.py
- ┣ 📂 rules
- ┃ ┣ 📜 CM_스펙템플릿.md
- ┃ ┗ 📜 CM_ABAP패턴.md
- ┣ 📜 requirements.txt
- ┗ 📜 README.md
-
+┣ 📜 app.py
+┣ 📂 rules
+┃ ┣ 📜 CM_스펙템플릿.md
+┃ ┗ 📜 CM_ABAP패턴.md
+┣ 📜 requirements.txt
+┗ 📜 README.md
 ---
 
 ## 🚀 5. 실행 방법
