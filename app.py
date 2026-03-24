@@ -534,13 +534,77 @@ with st.sidebar:
     st.markdown(f"**ABAP 패턴 파일:** {'정상 로드' if abap_pattern_doc != 'ABAP 패턴 문서 없음' else '미로드'}")
     st.info("현재 Gemini 기반으로 동작합니다.")
 
-st.markdown("### 진행 단계")
-c1, c2, c3, c4, c5 = st.columns(5)
-c1.info("1. 요구사항 입력")
-c2.success("2. SPEC 초안 생성 완료" if st.session_state.spec_draft else "2. SPEC 초안 생성 대기")
-c3.success("3. 최종 SPEC 확정 완료" if st.session_state.spec_final else "3. 최종 SPEC 확정 대기")
-c4.success("4. Structured Spec 완료" if st.session_state.structured_spec else "4. Structured Spec 대기")
-c5.success("5. CODE 생성 완료" if st.session_state.code else "5. CODE 생성 대기")
+#=========================
+# 1. 스타일 정의 (박스가 깨지지 않고 예쁘게 나열되도록)
+#=========================
+st.markdown("""
+    <style>
+    .step-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    .step-card {
+        flex: 1;
+        min-width: 150px; /* 박스의 최소 너비 보장 */
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 0.9rem;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+    }
+    .active { background-color: #E8F0FE; color: #1967D2; border: 1px solid #1967D2; }
+    .waiting { background-color: #F1F3F4; color: #5F6368; border: 1px solid #DADCE0; }
+    </style>
+    """, unsafe_allow_html=True)
+
+# =========================
+# 2. UI 그리기 (진행 단계 자동 하이라이트 로직 반영)
+# =========================
+st.subheader("진행 단계")
+
+# 현재 page_mode에 따라 어떤 단계를 강조할지 결정하는 로직
+current_mode = st.session_state.page_mode
+
+def get_card_class(step_mode):
+    # 페이지 모드와 단계 매칭
+    # 1단계: input
+    # 2단계: spec_review
+    # 3단계: spec_final (확정 전)
+    # 4단계 & 5단계: code_result (Structured Spec 포함)
+    
+    mapping = {
+        "input": 1,
+        "spec_review": 2,
+        "spec_final": 3,
+        "code_result": 5 # 4~5단계는 코드 결과 페이지에서 처리
+    }
+    
+    current_step = mapping.get(current_mode, 1)
+    
+    # 만약 Structured Spec 생성 버튼을 눌렀다면 4단계로 간주 (필요시 로직 세분화 가능)
+    if current_mode == "code_result" and not st.session_state.code:
+        current_step = 4
+
+    if step_mode == current_step:
+        return "step-card active"
+    else:
+        return "step-card waiting"
+
+# HTML로 직접 그려서 반응형으로 대응
+st.markdown(f"""
+    <div class="step-container">
+        <div class="{get_card_class(1)}">1. 요구사항 입력</div>
+        <div class="{get_card_class(2)}">2. SPEC 초안 생성</div>
+        <div class="{get_card_class(3)}">3. 최종 SPEC 확정</div>
+        <div class="{get_card_class(4)}">4. Structured Spec</div>
+        <div class="{get_card_class(5)}">5. CODE 생성 완료</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+st.divider() # 구분선 추가
 
 
 # =========================
